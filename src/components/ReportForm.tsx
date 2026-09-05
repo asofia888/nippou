@@ -348,7 +348,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
               className="text-xs font-bold text-ink flex items-center gap-1.5"
             >
               <span className="inline-block w-2 h-2 rounded-full bg-accent"></span>
-              今日の主な業務・活動内容 <span className="text-accent-2">*</span>
+              今日の主な業務・活動内容 <span className="text-danger">*</span>
             </label>
             <span className="text-[11px] text-ink-3">箇条書き推奨</span>
           </div>
@@ -386,7 +386,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
               htmlFor="report-achievements"
               className="text-xs font-bold text-ink flex items-center gap-1.5"
             >
-              <Sparkles className="w-3.5 h-3.5 text-accent-2" />
+              <Sparkles className="w-3.5 h-3.5 text-amber-ink" />
               成果・売上・決定事項
             </label>
             <span className="text-[11px] text-ink-3">意思決定の記録に</span>

@@ -52,7 +52,7 @@ describe('theme tokens', () => {
       'line', 'line-strong',
       'ink', 'ink-2', 'ink-3', 'ink-soft', 'on-dark',
       'accent', 'accent-hover', 'accent-active', 'accent-soft', 'accent-soft-hover',
-      'accent-line', 'accent-ink', 'accent-2', 'on-accent', 'on-accent-2',
+      'accent-line', 'accent-ink', 'on-accent', 'on-accent-2',
       'amber-soft', 'amber-line', 'amber-ink', 'mark',
       'danger', 'danger-hover', 'danger-active', 'danger-soft', 'danger-soft-hover',
       'danger-line', 'danger-ink',
@@ -72,7 +72,6 @@ describe('text contrast (WCAG AA, 4.5:1)', () => {
     ['accent-ink', 'surface'], ['accent-ink', 'page'], ['accent-ink', 'accent-soft'],
     ['amber-ink', 'surface'], ['amber-ink', 'amber-soft'],
     ['danger-ink', 'surface'], ['danger-ink', 'danger-soft'],
-    ['accent-2', 'surface'], ['accent-2', 'page'],
   ])('%s on %s', (fg, bg) => {
     expect(ratio(fg, bg)).toBeGreaterThanOrEqual(4.5);
   });
@@ -85,20 +84,19 @@ describe('text contrast (WCAG AA, 4.5:1)', () => {
   });
 });
 
-describe('the accent exception', () => {
-  // The owner picked a brighter orange than AA allows for body text. Rather
-  // than drop the check, it is pinned at the level the colour actually holds,
-  // so the band cannot drift brighter without someone deciding to.
-  it('keeps white on the accent above the 3.0 floor for large text and UI edges', () => {
-    expect(ratio('on-accent', 'accent')).toBeGreaterThanOrEqual(3.0);
+describe('the header band', () => {
+  // The band is a filled accent surface with white text on it, so it is held
+  // to the same 4.5 as any other body text.
+  it('carries white text at full AA', () => {
+    expect(ratio('on-accent', 'accent')).toBeGreaterThanOrEqual(4.5);
   });
 
-  it('still clears AA on the hover and pressed states', () => {
+  it('clears AA on the hover and pressed states too', () => {
     expect(ratio('on-accent', 'accent-hover')).toBeGreaterThanOrEqual(4.5);
     expect(ratio('on-accent', 'accent-active')).toBeGreaterThanOrEqual(4.5);
   });
 
-  it('keeps orange text on light surfaces at full AA', () => {
+  it('keeps accent text on light surfaces at full AA', () => {
     for (const bg of ['surface', 'page', 'accent-soft']) {
       expect(ratio('accent-ink', bg)).toBeGreaterThanOrEqual(4.5);
     }

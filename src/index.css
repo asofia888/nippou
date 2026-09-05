@@ -1,18 +1,15 @@
 @import "tailwindcss";
 
 /**
- * Cream ground, bright orange chrome. --color-page was sampled from the
- * reference screenshot (#F3EEEA, 90k pixels); --color-accent is the brighter
- * orange the owner chose.
+ * Cream ground, indigo chrome. --color-page was sampled from the reference
+ * screenshot (#F3EEEA, 90k pixels); --color-accent is the indigo the owner
+ * chose, and the rest of the accent family is derived from its hue.
  *
- * That accent is a deliberate exception to the palette's own rule: white on it
- * is 3.43:1, under AA's 4.5 for body text, though above the 3.0 that large
- * text and UI boundaries need. It was picked knowingly, so the band and the
- * primary button keep it. Everything else still clears AA — including
- * --color-accent-hover and -active, so pressed and hovered states are solid,
- * and --color-accent-ink for orange text on light surfaces.
+ * Unlike the orange it replaces, this accent clears AA on its own: white on it
+ * is 5.67:1, so the header band, the primary button and every state built from
+ * it are readable without an exception.
  *
- * Contrast rules the rest of the palette keeps:
+ * Contrast rules the palette keeps:
  *  - Text meets WCAG AA (4.5:1) against every surface it can land on.
  *  - Controls (inputs, chips, tinted blocks) keep an outline at 1.8:1 or
  *    better — a shadow is not a substitute for a control boundary.
@@ -43,19 +40,18 @@
   --color-ink-soft: #A2988F;       /* 無効状態のみ (WCAG対象外) */
   --color-on-dark: #FFFFFF;        /* 濃色面に載せる文字 */
 
-  /* Accent — bright orange. Also the header band. White on it is 3.43:1. */
-  --color-accent: #E06711;
-  --color-accent-hover: #C0580F;   /* 白文字 4.52:1 */
-  --color-accent-active: #98460C;  /* 白文字 6.53:1 */
-  --color-accent-soft: #FDEEE1;
-  --color-accent-soft-hover: #F9DCC4;
-  --color-accent-line: #ECA66D;
-  --color-accent-ink: #B0510D;     /* 明るい面に載せるオレンジ文字 4.5:1 以上 */
-  --color-accent-2: #92430B;       /* 必須マーク・成果アイコン */
-  --color-on-accent: #FFFFFF;      /* オレンジ帯に載せる文字 */
-  --color-on-accent-2: #FBE3CE;    /* 同・無効状態のみ (WCAG対象外) */
+  /* Accent — indigo. Also the header band. White on it is 5.67:1. */
+  --color-accent: #5856D5;
+  --color-accent-hover: #3D3BCE;   /* 白文字 7.73:1 */
+  --color-accent-active: #2D2BAC;  /* 白文字 10.23:1 */
+  --color-accent-soft: #E9E9F9;
+  --color-accent-soft-hover: #D1D0F3;
+  --color-accent-line: #8E8DE3;
+  --color-accent-ink: #2F2DB4;     /* 明るい面に載せる文字 白 9.74:1 */
+  --color-on-accent: #FFFFFF;      /* 帯に載せる文字 */
+  --color-on-accent-2: #D9D8F5;    /* 同・無効状態のみ (WCAG対象外) */
 
-  /* Amber — 成果・編集中。オレンジと混ざらないよう金色寄りに置く */
+  /* Amber — 成果・編集中。インディゴの補色側に置いた金色 */
   --color-amber-soft: #FBF3DC;
   --color-amber-line: #D3B462;
   --color-amber-ink: #8A6A18;
@@ -71,7 +67,7 @@
   --color-danger-ink: #A8322B;
 
   /* Focus */
-  --color-ring: #DA9257;
+  --color-ring: #6664D8;
 }
 
 @layer base {

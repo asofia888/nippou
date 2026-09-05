@@ -19,9 +19,10 @@ export default defineConfig(() => {
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
     test: {
-      // Only storage.test.ts needs a DOM (localStorage); it opts in with a
-      // docblock. Spinning up jsdom for every file made runs flaky on WSL,
-      // where environment setup alone took over two minutes.
+      // No test needs a DOM: storage.test.ts stubs localStorage itself.
+      // Starting jsdom made runs flake on WSL, where environment setup alone
+      // could exceed the worker timeout. jsdom stays installed for the day
+      // component tests arrive.
       environment: 'node',
       include: ['src/**/*.test.ts'],
       restoreMocks: true,

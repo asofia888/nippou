@@ -1,4 +1,3 @@
-// @vitest-environment jsdom
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   loadProfile,
@@ -13,7 +12,25 @@ import {
 const KEY = 'president_daily_reports_v1';
 const PROFILE_KEY = 'president_profile_v1';
 
-beforeEach(() => localStorage.clear());
+/**
+ * A localStorage stand-in, rather than pulling in jsdom for one file.
+ * Spinning up a DOM here made the suite time out intermittently on WSL, and
+ * this module only ever touches four Storage methods.
+ */
+class MemoryStorage {
+  private data = new Map<string, string>();
+  get length() { return this.data.size; }
+  key(i: number) { return [...this.data.keys()][i] ?? null; }
+  getItem(k: string) { return this.data.has(k) ? this.data.get(k)! : null; }
+  setItem(k: string, v: string) { this.data.set(k, String(v)); }
+  removeItem(k: string) { this.data.delete(k); }
+  clear() { this.data.clear(); }
+}
+
+const store = new MemoryStorage();
+vi.stubGlobal('localStorage', store);
+
+beforeEach(() => store.clear());
 
 describe('normalizeReport', () => {
   it('keeps a well-formed record', () => {
@@ -101,8 +118,10 @@ describe('saveReports / loadReports', () => {
   });
 
   it('reports failure instead of swallowing it', () => {
-    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
-      throw new DOMException('quota', 'QuotaExceededError');
+    vi.spyOn(store, 'setItem').mockImplementation(() => {
+      const error = new Error('quota');
+      error.name = 'QuotaExceededError';
+      throw error;
     });
     expect(saveReports([])).toBe(false);
     expect(saveProfile({ companyName: '', presidentName: '' })).toBe(false);
