@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 /**
- * Cream ground, indigo chrome. --color-page was sampled from the reference
- * screenshot (#F3EEEA, 90k pixels); --color-accent is the indigo the owner
- * chose, and the rest of the accent family is derived from its hue.
+ * Light-grey ground, indigo chrome. --color-accent is the indigo the owner
+ * chose; the rest of the accent family is derived from its hue, and the
+ * neutrals carry a trace of that same hue so they sit with it rather than
+ * reading as a separate, colder grey.
  *
  * Unlike the orange it replaces, this accent clears AA on its own: white on it
  * is 5.67:1, so the header band, the primary button and every state built from
@@ -17,27 +18,27 @@
  * cannot silently slide further, and checks that cards keep their elevation.
  */
 @theme {
-  /* Surfaces — white cards on cream */
-  --color-page: #F3EEEA;
+  /* Surfaces — white cards on light grey */
+  --color-page: #F2F3F7;
   --color-surface: #FFFFFF;
-  --color-surface-hover: #FAF7F4;
-  --color-sunken: #F0E9E3;         /* 入力欄・本文ブロック */
-  --color-sunken-2: #E6DCD3;       /* タブの溝・チップ */
+  --color-surface-hover: #F8F9FC;
+  --color-sunken: #F0F1F6;         /* 入力欄・本文ブロック */
+  --color-sunken-2: #E4E6EF;       /* タブの溝・チップ */
 
   /* Elevation */
-  --shadow-card: 0 1px 2px rgba(46, 42, 38, .07), 0 2px 8px rgba(46, 42, 38, .06);
-  --shadow-card-hover: 0 2px 4px rgba(46, 42, 38, .08), 0 8px 20px rgba(46, 42, 38, .11);
-  --shadow-modal: 0 2px 8px rgba(46, 42, 38, .12), 0 16px 48px rgba(46, 42, 38, .24);
+  --shadow-card: 0 1px 2px rgba(35, 35, 43, .07), 0 2px 8px rgba(35, 35, 43, .06);
+  --shadow-card-hover: 0 2px 4px rgba(35, 35, 43, .08), 0 8px 20px rgba(35, 35, 43, .11);
+  --shadow-modal: 0 2px 8px rgba(35, 35, 43, .12), 0 16px 48px rgba(35, 35, 43, .24);
 
   /* Lines — controls and dividers only, not card outlines */
-  --color-line: #BCADA1;
-  --color-line-strong: #AC9C91;
+  --color-line: #B3B5C5;
+  --color-line-strong: #9FA1B2;
 
   /* Text */
-  --color-ink: #2E2A26;            /* 14.2:1 on white */
-  --color-ink-2: #574F48;          /*  8.0:1 */
-  --color-ink-3: #696059;          /*  6.1:1 — 補助文・プレースホルダ */
-  --color-ink-soft: #A2988F;       /* 無効状態のみ (WCAG対象外) */
+  --color-ink: #23232B;            /* 15.6:1 on white */
+  --color-ink-2: #4C4C5A;          /*  8.4:1 */
+  --color-ink-3: #61616F;          /*  6.1:1 — 補助文・プレースホルダ */
+  --color-ink-soft: #9A9AA8;       /* 無効状態のみ (WCAG対象外) */
   --color-on-dark: #FFFFFF;        /* 濃色面に載せる文字 */
 
   /* Accent — indigo. Also the header band. White on it is 5.67:1. */
@@ -51,7 +52,7 @@
   --color-on-accent: #FFFFFF;      /* 帯に載せる文字 */
   --color-on-accent-2: #D9D8F5;    /* 同・無効状態のみ (WCAG対象外) */
 
-  /* Amber — 成果・編集中。インディゴの補色側に置いた金色 */
+  /* Gold — 成果・編集中。寒色の地とインディゴに対する暖色の対比 */
   --color-amber-soft: #FBF3DC;
   --color-amber-line: #D3B462;
   --color-amber-ink: #8A6A18;
