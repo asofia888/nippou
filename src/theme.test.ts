@@ -95,6 +95,10 @@ describe('structure', () => {
     expect(ratio(fg, bg)).toBeGreaterThanOrEqual(1.8);
   });
 
+  it('lifts white cards off the grey ground', () => {
+    expect(ratio('surface', 'page')).toBeGreaterThan(1.05);
+  });
+
   it('keeps sunken fills distinct from the cards they sit in', () => {
     expect(ratio('sunken', 'surface')).toBeGreaterThan(1.08);
     expect(ratio('sunken-2', 'surface')).toBeGreaterThan(1.08);

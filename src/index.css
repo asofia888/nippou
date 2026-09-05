@@ -1,44 +1,43 @@
 @import "tailwindcss";
 
 /**
- * White theme with shadow-lifted cards.
+ * Grey ground, white cards, green accent.
  *
  * Every colour the UI uses is named here by role, so the look can be adjusted
  * in one place instead of across ~380 hard-coded hex values.
  *
- * The ground and the cards are both pure white; cards are separated by
- * elevation rather than by a fill difference or an outline. That puts the
- * whole burden of "where does this card end" on --shadow-card, so it is
- * defined here alongside the colours and applied through one utility.
+ * Cards are separated twice over: they are white on a grey ground (1.11), and
+ * they carry --shadow-card. The neutrals are grey with only a trace of the
+ * accent's hue, so they sit with the green without reading as green.
  *
- * Contrast rules the palette still has to keep:
+ * Contrast rules the palette has to keep:
  *  - Text meets WCAG AA (4.5:1) against every surface it can land on.
- *  - Controls (inputs, chips, tinted blocks) keep a real outline at 1.8:1 or
+ *  - Controls (inputs, chips, tinted blocks) keep an outline at 1.8:1 or
  *    better — a shadow is not a substitute for a control boundary.
- * src/theme.test.ts enforces both, and checks that cards use the shadow.
+ * src/theme.test.ts enforces both, and checks that cards keep their elevation.
  */
 @theme {
-  /* Surfaces — the ground and the cards are the same white */
-  --color-page: #FFFFFF;
+  /* Surfaces — white cards on grey */
+  --color-page: #F2F4F2;
   --color-surface: #FFFFFF;
-  --color-surface-hover: #F7FAF6;
-  --color-sunken: #F1F5F0;         /* 入力欄・本文ブロック */
-  --color-sunken-2: #E7EDE6;       /* タブの溝・チップ */
+  --color-surface-hover: #F8F9F8;
+  --color-sunken: #F0F2F0;         /* 入力欄・本文ブロック */
+  --color-sunken-2: #E5E8E5;       /* タブの溝・チップ */
 
-  /* Elevation — this is what makes a card a card here */
-  --shadow-card: 0 1px 2px rgba(28, 32, 27, .06), 0 2px 8px rgba(28, 32, 27, .06);
-  --shadow-card-hover: 0 2px 4px rgba(28, 32, 27, .07), 0 8px 20px rgba(28, 32, 27, .10);
-  --shadow-modal: 0 2px 8px rgba(28, 32, 27, .10), 0 16px 48px rgba(28, 32, 27, .22);
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgba(28, 31, 28, .06), 0 2px 8px rgba(28, 31, 28, .06);
+  --shadow-card-hover: 0 2px 4px rgba(28, 31, 28, .07), 0 8px 20px rgba(28, 31, 28, .10);
+  --shadow-modal: 0 2px 8px rgba(28, 31, 28, .10), 0 16px 48px rgba(28, 31, 28, .22);
 
-  /* Lines — controls and dividers only, no longer card outlines */
-  --color-line: #ADBBAA;
-  --color-line-strong: #96A792;
+  /* Lines — controls and dividers only, not card outlines */
+  --color-line: #B1B8B0;
+  --color-line-strong: #9DA49C;
 
   /* Text */
-  --color-ink: #1C201B;            /* 16.5:1 on white */
-  --color-ink-2: #4E564C;          /*  7.6:1 */
-  --color-ink-3: #616A5F;          /*  5.6:1 — 補助文・プレースホルダ */
-  --color-ink-soft: #98A196;       /* 無効状態のみ (WCAG対象外) */
+  --color-ink: #1C1F1C;            /* 16.6:1 on white */
+  --color-ink-2: #4E524D;          /*  8.0:1 */
+  --color-ink-3: #636862;          /*  5.7:1 — 補助文・プレースホルダ */
+  --color-ink-soft: #9BA09A;       /* 無効状態のみ (WCAG対象外) */
   --color-on-dark: #FFFFFF;        /* 濃色面に載せる文字 */
 
   /* Accent — green */
