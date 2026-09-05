@@ -104,7 +104,7 @@ export const Modal: React.FC<ModalProps> = ({
         aria-label={label}
         tabIndex={-1}
         onMouseDown={(event) => event.stopPropagation()}
-        className={`bg-surface w-full ${panelClassName} rounded-2xl shadow-xl border border-line outline-none`}
+        className={`bg-surface w-full ${panelClassName} rounded-2xl shadow-modal outline-none`}
       >
         {children}
       </div>

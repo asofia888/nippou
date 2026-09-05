@@ -228,7 +228,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
       {/* Main Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Date & Hours Row */}
-        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-4">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 shadow-card space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Date Picker & Quick Selectors */}
             <div>
@@ -341,7 +341,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
         )}
 
         {/* 1. Today's Tasks */}
-        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-2.5">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 shadow-card space-y-2.5">
           <div className="flex items-center justify-between">
             <label
               htmlFor="report-tasks"
@@ -380,7 +380,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
         </div>
 
         {/* 2. Achievements & Decisions */}
-        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-2.5">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 shadow-card space-y-2.5">
           <div className="flex items-center justify-between">
             <label
               htmlFor="report-achievements"
@@ -418,7 +418,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
         </div>
 
         {/* 3. Learnings & Challenges */}
-        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-2.5">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 shadow-card space-y-2.5">
           <label htmlFor="report-learnings" className="text-xs font-bold text-ink block">
             課題・気づき・反省
           </label>
@@ -433,7 +433,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
         </div>
 
         {/* 4. Tomorrow's Plans */}
-        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-2.5">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 shadow-card space-y-2.5">
           <label htmlFor="report-tomorrow" className="text-xs font-bold text-ink block">
             明日の予定・最優先タスク
           </label>

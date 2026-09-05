@@ -164,7 +164,7 @@ export const ReportList: React.FC<ReportListProps> = ({
   return (
     <div className="w-full space-y-4">
       {/* Top Controls: Filter & Export Bar */}
-      <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-3.5">
+      <div className="bg-surface rounded-2xl p-4 sm:p-5 shadow-card space-y-3.5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="text-sm font-bold text-ink">
@@ -321,7 +321,7 @@ export const ReportList: React.FC<ReportListProps> = ({
 
       {/* Reports List */}
       {filteredReports.length === 0 ? (
-        <div className="bg-surface rounded-2xl p-8 border border-line text-center space-y-3">
+        <div className="bg-surface rounded-2xl p-8 shadow-card text-center space-y-3">
           <div className="w-12 h-12 rounded-full bg-sunken text-ink-3 mx-auto flex items-center justify-center">
             <FileSpreadsheet className="w-6 h-6" />
           </div>
@@ -366,7 +366,7 @@ export const ReportList: React.FC<ReportListProps> = ({
             return (
               <div
                 key={report.id}
-                className="bg-surface rounded-2xl border border-line shadow-2xs hover:border-line-strong transition-all overflow-hidden"
+                className="bg-surface rounded-2xl shadow-card hover:shadow-card-hover transition-shadow overflow-hidden"
               >
                 {/* Card Header: a real button so it is reachable by keyboard */}
                 <button
