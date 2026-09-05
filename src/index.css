@@ -1,5 +1,61 @@
 @import "tailwindcss";
 
+/**
+ * Ivory theme.
+ *
+ * Every colour the UI uses is named here by role, so the look can be adjusted
+ * in one place instead of across ~380 hard-coded hex values. Contrast against
+ * every surface it can land on is at least 4.5:1 for text; borders sit around
+ * 2:1 so cards actually read as cards on the ivory ground.
+ */
+@theme {
+  /* Surfaces */
+  --color-page: #F6F0DE;           /* アイボリーの地 */
+  --color-surface: #FFFFFF;        /* カード */
+  --color-surface-hover: #FBF7EC;
+  --color-sunken: #F3ECD9;         /* 入力欄・本文ブロック */
+  --color-sunken-2: #EAE1C7;       /* タブの溝・チップ */
+
+  /* Lines */
+  --color-line: #C4B288;
+  --color-line-strong: #AD9764;
+
+  /* Text */
+  --color-ink: #2A2620;            /* 15.0:1 on surface */
+  --color-ink-2: #574F41;          /*  8.1:1 */
+  --color-ink-3: #6B6252;          /*  6.0:1 — 補助文・プレースホルダ */
+  --color-ink-soft: #9C907A;       /* 無効状態のみ (WCAG対象外) */
+  --color-on-dark: #F6F0DE;        /* 濃色面に載せる文字 */
+
+  /* Accent — olive */
+  --color-accent: #4F5A3C;
+  --color-accent-hover: #3E4830;
+  --color-accent-active: #2F3724;
+  --color-accent-soft: #E6EDD5;
+  --color-accent-soft-hover: #DAE4C2;
+  --color-accent-line: #9DB273;
+  --color-accent-ink: #3B4529;
+  --color-accent-2: #8C4A2B;       /* 必須マーク・成果アイコン */
+
+  /* Amber — 成果・編集中 */
+  --color-amber-soft: #FAEFD2;
+  --color-amber-line: #CBA765;
+  --color-amber-ink: #6F5217;
+  --color-mark: #F2D68C;           /* 検索ハイライト */
+
+  /* Danger */
+  --color-danger: #8C4343;
+  --color-danger-hover: #733636;
+  --color-danger-active: #5D2C2C;
+  --color-danger-soft: #F9E8E3;
+  --color-danger-soft-hover: #F2DAD3;
+  --color-danger-line: #CE9A8D;
+  --color-danger-ink: #7A3630;
+
+  /* Focus */
+  --color-ring: #9E8E62;
+}
+
 @layer base {
   body {
     font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;

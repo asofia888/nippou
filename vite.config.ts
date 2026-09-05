@@ -19,7 +19,10 @@ export default defineConfig(() => {
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
     test: {
-      environment: 'jsdom',
+      // Only storage.test.ts needs a DOM (localStorage); it opts in with a
+      // docblock. Spinning up jsdom for every file made runs flaky on WSL,
+      // where environment setup alone took over two minutes.
+      environment: 'node',
       include: ['src/**/*.test.ts'],
       restoreMocks: true,
       // Dates are formatted in local time on purpose; pin the zone so the

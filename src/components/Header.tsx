@@ -106,19 +106,19 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#F8F7F4]/95 backdrop-blur-md border-b border-[#E6E2D3]">
+    <header className="sticky top-0 z-40 bg-page/95 backdrop-blur-md border-b border-line">
       <div className="max-w-xl mx-auto px-4 py-3">
         {/* Top brand row */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-[#2D2A26] text-[#F8F7F4] flex items-center justify-center font-bold text-sm shadow-xs">
+            <div className="w-8 h-8 rounded-xl bg-ink text-on-dark flex items-center justify-center font-bold text-sm shadow-xs">
               日
             </div>
             <div>
-              <h1 className="text-base font-bold text-[#2D2A26] tracking-tight leading-none">
+              <h1 className="text-base font-bold text-ink tracking-tight leading-none">
                 一人社長の日報
               </h1>
-              <p className="text-[11px] text-[#6B6359] font-medium mt-0.5">
+              <p className="text-[11px] text-ink-3 font-medium mt-0.5">
                 {profile.companyName ? `${profile.companyName} ` : ''}
                 {profile.presidentName ? `(${profile.presidentName})` : 'スマホから簡単作成 & CSV'}
               </p>
@@ -135,13 +135,13 @@ export const Header: React.FC<HeaderProps> = ({
               disabled={allReports.length === 0}
               className={`h-8.5 px-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border ${
                 allReports.length > 0
-                  ? 'bg-white text-[#58684D] hover:bg-[#FDFCFB] border-[#E6E2D3] shadow-2xs'
-                  : 'bg-[#F0EDE4] text-[#B5AEA4] border-[#E6E2D3] cursor-not-allowed'
+                  ? 'bg-surface text-accent-ink hover:bg-surface-hover border-line shadow-2xs'
+                  : 'bg-sunken text-ink-soft border-line cursor-not-allowed'
               }`}
             >
               <Download className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">CSV保存</span>
-              <span className="text-[10px] bg-[#ECEEE6] text-[#58684D] px-1.5 py-0.2 rounded-full font-mono">
+              <span className="text-[10px] bg-accent-soft text-accent-ink px-1.5 py-0.2 rounded-full font-mono">
                 {reportsCount}
               </span>
             </button>
@@ -150,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={handleOpenSettings}
-              className="w-8.5 h-8.5 rounded-xl bg-white hover:bg-[#FDFCFB] border border-[#E6E2D3] text-[#6B6359] flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+              className="w-8.5 h-8.5 rounded-xl bg-surface hover:bg-surface-hover border border-line text-ink-3 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
               title="会社名・設定"
               aria-label="会社名・設定を開く"
             >
@@ -160,14 +160,14 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Tab switchers: Mobile-optimized 44px min tap height */}
-        <div className="mt-3 grid grid-cols-2 gap-1 bg-[#ECE8DC] p-1 rounded-xl border border-[#E6E2D3]/60">
+        <div className="mt-3 grid grid-cols-2 gap-1 bg-sunken-2 p-1 rounded-xl border border-line/60">
           <button
             type="button"
             onClick={() => onTabChange('create')}
             className={`py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               currentTab === 'create'
-                ? 'bg-white text-[#2D2A26] shadow-xs'
-                : 'text-[#6B6359] hover:text-[#2D2A26]'
+                ? 'bg-surface text-ink shadow-xs'
+                : 'text-ink-3 hover:text-ink'
             }`}
           >
             <span>✏️ 日報を書く</span>
@@ -177,12 +177,12 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => onTabChange('list')}
             className={`py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               currentTab === 'list'
-                ? 'bg-white text-[#2D2A26] shadow-xs'
-                : 'text-[#6B6359] hover:text-[#2D2A26]'
+                ? 'bg-surface text-ink shadow-xs'
+                : 'text-ink-3 hover:text-ink'
             }`}
           >
             <span>📋 一覧・CSV出力</span>
-            <span className="text-[10px] bg-[#DDD8CC] text-[#4A443F] px-1.5 py-0.2 rounded-full font-medium">
+            <span className="text-[10px] bg-sunken-2 text-ink-2 px-1.5 py-0.2 rounded-full font-medium">
               {reportsCount}
             </span>
           </button>
@@ -197,22 +197,22 @@ export const Header: React.FC<HeaderProps> = ({
           panelClassName="max-w-sm max-h-[85vh] overflow-y-auto"
         >
           <div className="p-5 space-y-4">
-            <div className="flex items-center justify-between pb-2 border-b border-[#E6E2D3]">
-              <h3 className="font-bold text-sm text-[#2D2A26] flex items-center gap-1.5">
-                <Settings className="w-4 h-4 text-[#6B6359]" />
+            <div className="flex items-center justify-between pb-2 border-b border-line">
+              <h3 className="font-bold text-sm text-ink flex items-center gap-1.5">
+                <Settings className="w-4 h-4 text-ink-3" />
                 日報ヘッダー設定（任意）
               </h3>
               <button
                 type="button"
                 onClick={() => setIsSettingsOpen(false)}
                 aria-label="設定を閉じる"
-                className="w-7 h-7 flex items-center justify-center text-[#6B6359] hover:text-[#2D2A26] rounded-full hover:bg-[#F0EDE4] transition-colors"
+                className="w-7 h-7 flex items-center justify-center text-ink-3 hover:text-ink rounded-full hover:bg-sunken transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <p className="text-xs text-[#6B6359] leading-relaxed">
+            <p className="text-xs text-ink-3 leading-relaxed">
               設定すると、共有用テキストや日報のヘッダーに会社名や氏名が自動反映されます。空欄のままでも利用できます。
             </p>
 
@@ -220,9 +220,9 @@ export const Header: React.FC<HeaderProps> = ({
               <div>
                 <label
                   htmlFor="profile-company"
-                  className="text-xs font-bold text-[#4A443F] mb-1 flex items-center gap-1"
+                  className="text-xs font-bold text-ink-2 mb-1 flex items-center gap-1"
                 >
-                  <Building2 className="w-3.5 h-3.5 text-[#6B6359]" />
+                  <Building2 className="w-3.5 h-3.5 text-ink-3" />
                   会社名・屋号
                 </label>
                 <input
@@ -233,16 +233,16 @@ export const Header: React.FC<HeaderProps> = ({
                   onChange={(e) =>
                     setTempProfile({ ...tempProfile, companyName: e.target.value })
                   }
-                  className="w-full h-10 px-3 bg-[#F8F7F4] border border-[#E6E2D3] rounded-xl text-base font-medium text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#A5A58D]/30 focus:border-[#A5A58D] focus:bg-white"
+                  className="w-full h-10 px-3 bg-sunken border border-line rounded-xl text-base font-medium text-ink focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring focus:bg-surface"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="profile-name"
-                  className="text-xs font-bold text-[#4A443F] mb-1 flex items-center gap-1"
+                  className="text-xs font-bold text-ink-2 mb-1 flex items-center gap-1"
                 >
-                  <User className="w-3.5 h-3.5 text-[#6B6359]" />
+                  <User className="w-3.5 h-3.5 text-ink-3" />
                   お名前（役職）
                 </label>
                 <input
@@ -253,14 +253,14 @@ export const Header: React.FC<HeaderProps> = ({
                   onChange={(e) =>
                     setTempProfile({ ...tempProfile, presidentName: e.target.value })
                   }
-                  className="w-full h-10 px-3 bg-[#F8F7F4] border border-[#E6E2D3] rounded-xl text-base font-medium text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#A5A58D]/30 focus:border-[#A5A58D] focus:bg-white"
+                  className="w-full h-10 px-3 bg-sunken border border-line rounded-xl text-base font-medium text-ink focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring focus:bg-surface"
                 />
               </div>
 
               {saveError && (
                 <p
                   role="alert"
-                  className="text-[11px] leading-relaxed text-[#7A4040] bg-[#F8EEEE] border border-[#E0C4C4] rounded-lg px-2.5 py-2"
+                  className="text-[11px] leading-relaxed text-danger-ink bg-danger-soft border border-danger-line rounded-lg px-2.5 py-2"
                 >
                   {saveError}
                 </p>
@@ -269,11 +269,11 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="pt-2 flex items-center gap-2">
                 <button
                   type="submit"
-                  className="flex-1 h-10 bg-[#6B705C] text-white font-bold text-xs rounded-xl hover:bg-[#5A5E4D] transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                  className="flex-1 h-10 bg-accent text-on-dark font-bold text-xs rounded-xl hover:bg-accent-hover transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                 >
                   {savedNotice ? (
                     <>
-                      <Check className="w-4 h-4 text-[#D8E2DC]" />
+                      <Check className="w-4 h-4 text-on-dark" />
                       <span>保存しました</span>
                     </>
                   ) : (
@@ -283,7 +283,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsSettingsOpen(false)}
-                  className="h-10 px-3 bg-[#F0EDE4] hover:bg-[#E6E2D3] text-[#4A443F] font-medium text-xs rounded-xl transition-colors"
+                  className="h-10 px-3 bg-sunken hover:bg-line text-ink-2 font-medium text-xs rounded-xl transition-colors"
                 >
                   閉じる
                 </button>
@@ -291,12 +291,12 @@ export const Header: React.FC<HeaderProps> = ({
             </form>
 
             {/* Backup & restore: the only path that survives a lost device */}
-            <div className="pt-3 border-t border-[#E6E2D3] space-y-2.5">
-              <h4 className="text-xs font-bold text-[#2D2A26] flex items-center gap-1.5">
-                <ShieldAlert className="w-3.5 h-3.5 text-[#6B6359]" />
+            <div className="pt-3 border-t border-line space-y-2.5">
+              <h4 className="text-xs font-bold text-ink flex items-center gap-1.5">
+                <ShieldAlert className="w-3.5 h-3.5 text-ink-3" />
                 バックアップと復元
               </h4>
-              <p className="text-[11px] text-[#6B6359] leading-relaxed">
+              <p className="text-[11px] text-ink-3 leading-relaxed">
                 日報はこの端末のブラウザ内にだけ保存されます。機種変更やブラウザのデータ削除で消えるため、
                 ときどきバックアップを保存してください。CSVは提出・閲覧用のため、
                 復元にはこのJSONファイルが必要です。
@@ -308,8 +308,8 @@ export const Header: React.FC<HeaderProps> = ({
                 disabled={allReports.length === 0}
                 className={`w-full h-10 flex items-center justify-center gap-1.5 rounded-xl font-bold text-xs transition-colors border ${
                   allReports.length > 0
-                    ? 'bg-[#6B705C] text-white hover:bg-[#5A5E4D] border-[#6B705C] cursor-pointer shadow-xs'
-                    : 'bg-[#F0EDE4] text-[#B5AEA4] border-[#E6E2D3] cursor-not-allowed'
+                    ? 'bg-accent text-on-dark hover:bg-accent-hover border-accent cursor-pointer shadow-xs'
+                    : 'bg-sunken text-ink-soft border-line cursor-not-allowed'
                 }`}
               >
                 <Save className="w-4 h-4" />
@@ -319,9 +319,9 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="w-full h-10 flex items-center justify-center gap-1.5 rounded-xl font-semibold text-xs bg-[#F0EDE4] text-[#2D2A26] hover:bg-[#E6E2D3] border border-[#E6E2D3] transition-colors cursor-pointer"
+                className="w-full h-10 flex items-center justify-center gap-1.5 rounded-xl font-semibold text-xs bg-sunken text-ink hover:bg-line border border-line transition-colors cursor-pointer"
               >
-                <Upload className="w-4 h-4 text-[#6B6359]" />
+                <Upload className="w-4 h-4 text-ink-3" />
                 バックアップから復元
               </button>
               <input
@@ -337,7 +337,7 @@ export const Header: React.FC<HeaderProps> = ({
               {restoreError && (
                 <p
                   role="alert"
-                  className="text-[11px] leading-relaxed text-[#7A4040] bg-[#F8EEEE] border border-[#E0C4C4] rounded-lg px-2.5 py-2"
+                  className="text-[11px] leading-relaxed text-danger-ink bg-danger-soft border border-danger-line rounded-lg px-2.5 py-2"
                 >
                   {restoreError}
                 </p>
@@ -354,24 +354,24 @@ export const Header: React.FC<HeaderProps> = ({
           onClose={() => setRestoreCandidate(null)}
         >
           <div className="p-5 space-y-4">
-            <h3 className="font-bold text-sm text-[#2D2A26] flex items-center gap-1.5 pb-2 border-b border-[#E6E2D3]">
-              <Upload className="w-4 h-4 text-[#846231]" />
+            <h3 className="font-bold text-sm text-ink flex items-center gap-1.5 pb-2 border-b border-line">
+              <Upload className="w-4 h-4 text-amber-ink" />
               バックアップから復元しますか？
             </h3>
 
-            <div className="rounded-xl bg-[#F8F7F4] border border-[#E6E2D3] p-3 space-y-1.5 text-xs">
+            <div className="rounded-xl bg-sunken border border-line p-3 space-y-1.5 text-xs">
               <div className="flex items-center justify-between">
-                <span className="text-[#6B6359]">現在この端末にある日報</span>
-                <span className="font-bold text-[#2D2A26]">{allReports.length} 件</span>
+                <span className="text-ink-3">現在この端末にある日報</span>
+                <span className="font-bold text-ink">{allReports.length} 件</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#6B6359]">復元後</span>
-                <span className="font-bold text-[#2D2A26]">{restoreCandidate.reports.length} 件</span>
+                <span className="text-ink-3">復元後</span>
+                <span className="font-bold text-ink">{restoreCandidate.reports.length} 件</span>
               </div>
             </div>
 
-            <p className="text-xs text-[#6B6359] leading-relaxed">
-              現在の日報は<strong className="text-[#7A4040]">すべて置き換わります</strong>。
+            <p className="text-xs text-ink-3 leading-relaxed">
+              現在の日報は<strong className="text-danger-ink">すべて置き換わります</strong>。
               元に戻せないため、必要であれば先に「バックアップを保存」してください。
             </p>
 
@@ -379,14 +379,14 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={handleConfirmRestore}
-                className="w-full h-11 bg-[#8E4F4F] text-white hover:bg-[#783F3F] active:bg-[#6B3737] rounded-xl font-bold text-sm shadow-xs transition-colors cursor-pointer"
+                className="w-full h-11 bg-danger text-on-dark hover:bg-danger-hover active:bg-danger-active rounded-xl font-bold text-sm shadow-xs transition-colors cursor-pointer"
               >
                 置き換えて復元する
               </button>
               <button
                 type="button"
                 onClick={() => setRestoreCandidate(null)}
-                className="w-full h-11 bg-[#F0EDE4] text-[#2D2A26] hover:bg-[#E6E2D3] rounded-xl font-semibold text-sm border border-[#E6E2D3] transition-colors cursor-pointer"
+                className="w-full h-11 bg-sunken text-ink hover:bg-line rounded-xl font-semibold text-sm border border-line transition-colors cursor-pointer"
               >
                 キャンセル
               </button>

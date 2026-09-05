@@ -88,7 +88,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#2D2A26]/40 backdrop-blur-xs flex justify-center p-3 sm:p-4 ${
+      className={`fixed inset-0 z-50 bg-ink/40 backdrop-blur-xs flex justify-center p-3 sm:p-4 ${
         align === 'sheet' ? 'items-end sm:items-center' : 'items-center'
       }`}
       onMouseDown={(event) => {
@@ -104,7 +104,7 @@ export const Modal: React.FC<ModalProps> = ({
         aria-label={label}
         tabIndex={-1}
         onMouseDown={(event) => event.stopPropagation()}
-        className={`bg-white w-full ${panelClassName} rounded-2xl shadow-xl border border-[#E6E2D3] outline-none`}
+        className={`bg-surface w-full ${panelClassName} rounded-2xl shadow-xl border border-line outline-none`}
       >
         {children}
       </div>

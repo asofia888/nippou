@@ -83,7 +83,7 @@ export default function App() {
     : profile.presidentName || undefined;
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4] text-[#4A443F] pb-16 flex flex-col selection:bg-[#6B705C] selection:text-white">
+    <div className="min-h-screen bg-page text-ink-2 pb-16 flex flex-col selection:bg-accent selection:text-on-dark">
       {/* Top Fixed / Sticky Navigation */}
       <Header
         currentTab={currentTab}
@@ -101,7 +101,7 @@ export default function App() {
         {storageError && (
           <div
             role="alert"
-            className="mb-4 flex items-start gap-2.5 rounded-xl border border-[#E0C4C4] bg-[#F8EEEE] px-4 py-3 text-[#7A4040]"
+            className="mb-4 flex items-start gap-2.5 rounded-xl border border-danger-line bg-danger-soft px-4 py-3 text-danger-ink"
           >
             <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
             <div className="flex-1 text-xs leading-relaxed">
@@ -112,7 +112,7 @@ export default function App() {
               type="button"
               onClick={() => setStorageError(null)}
               aria-label="この警告を閉じる"
-              className="shrink-0 w-6 h-6 rounded-full hover:bg-[#EFDCDC] flex items-center justify-center transition-colors cursor-pointer"
+              className="shrink-0 w-6 h-6 rounded-full hover:bg-danger-soft-hover flex items-center justify-center transition-colors cursor-pointer"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -122,10 +122,10 @@ export default function App() {
         {currentTab === 'create' ? (
           <div className="space-y-4">
             <div className="flex items-center justify-between px-1">
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#6B6359]">
+              <h2 className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
                 {editingReport ? '日報の修正' : '本日の日報作成'}
               </h2>
-              <span className="text-[11px] text-[#6F6760] font-medium">
+              <span className="text-[11px] text-ink-3 font-medium">
                 一人社長の静かな記録
               </span>
             </div>
@@ -142,13 +142,13 @@ export default function App() {
         ) : (
           <div className="space-y-4">
             <div className="flex items-center justify-between px-1">
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#6B6359]">
+              <h2 className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink-3">
                 記録済みの履歴・データ
               </h2>
               <button
                 type="button"
                 onClick={() => setCurrentTab('create')}
-                className="text-xs font-semibold text-[#2D2A26] hover:text-[#6B705C] transition-colors cursor-pointer"
+                className="text-xs font-semibold text-ink hover:text-accent transition-colors cursor-pointer"
               >
                 + 新しい日報を書く
               </button>
@@ -166,9 +166,9 @@ export default function App() {
       </main>
 
       {/* Minimal Footer */}
-      <footer className="mt-12 text-center text-xs text-[#6B6359] py-6 border-t border-[#E6E2D3]">
-        <p className="font-medium text-[#4A443F]">一人社長の日報</p>
-        <p className="text-[11px] text-[#6F6760] mt-0.5">
+      <footer className="mt-12 text-center text-xs text-ink-3 py-6 border-t border-line">
+        <p className="font-medium text-ink-2">一人社長の日報</p>
+        <p className="text-[11px] text-ink-3 mt-0.5">
           データはこの端末のブラウザ内に保存されます。機種変更やデータ削除に備え、
           設定からバックアップを保存できます
         </p>

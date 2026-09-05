@@ -211,14 +211,14 @@ export const ReportForm: React.FC<ReportFormProps> = ({
     <div className="w-full">
       {/* Edit Mode Alert Header */}
       {editingReport && (
-        <div className="mb-4 flex items-center justify-between rounded-xl bg-[#FDF9F2] px-4 py-3 text-[#846231] border border-[#EADBBD]">
+        <div className="mb-4 flex items-center justify-between rounded-xl bg-amber-soft px-4 py-3 text-amber-ink border border-amber-line">
           <div className="text-sm font-semibold">
             {editingReport.date} の日報を編集中
           </div>
           <button
             type="button"
             onClick={onCancelEdit}
-            className="text-xs font-medium bg-white text-[#846231] px-2.5 py-1.5 rounded-lg border border-[#EADBBD] hover:bg-[#FAF3E6]"
+            className="text-xs font-medium bg-surface text-amber-ink px-2.5 py-1.5 rounded-lg border border-amber-line hover:bg-amber-soft"
           >
             編集をキャンセル
           </button>
@@ -228,15 +228,15 @@ export const ReportForm: React.FC<ReportFormProps> = ({
       {/* Main Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Date & Hours Row */}
-        <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E6E2D3] shadow-xs space-y-4">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Date Picker & Quick Selectors */}
             <div>
               <label
                 htmlFor="report-date"
-                className="text-xs font-bold text-[#4A443F] mb-1.5 flex items-center gap-1.5"
+                className="text-xs font-bold text-ink-2 mb-1.5 flex items-center gap-1.5"
               >
-                <Calendar className="w-3.5 h-3.5 text-[#6B6359]" />
+                <Calendar className="w-3.5 h-3.5 text-ink-3" />
                 日報の日付
               </label>
               <div className="flex gap-2 items-center">
@@ -245,7 +245,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
                   type="date"
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                  className="w-full h-11 px-3 bg-[#F8F7F4] border border-[#E6E2D3] rounded-xl text-base font-medium text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#A5A58D]/30 focus:border-[#A5A58D] focus:bg-white"
+                  className="w-full h-11 px-3 bg-sunken border border-line rounded-xl text-base font-medium text-ink focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring focus:bg-surface"
                   required
                 />
                 <button
@@ -253,8 +253,8 @@ export const ReportForm: React.FC<ReportFormProps> = ({
                   onClick={() => setFormData({ ...formData, date: getTodayString() })}
                   className={`h-11 px-3 text-xs font-semibold rounded-xl border shrink-0 transition-colors ${
                     formData.date === getTodayString()
-                      ? 'bg-[#2D2A26] text-[#F8F7F4] border-[#2D2A26]'
-                      : 'bg-[#F0EDE4] text-[#5A544C] border-[#E6E2D3] hover:bg-[#E6E2D3]'
+                      ? 'bg-ink text-on-dark border-ink'
+                      : 'bg-sunken text-ink-2 border-line hover:bg-line'
                   }`}
                 >
                   今日
@@ -264,8 +264,8 @@ export const ReportForm: React.FC<ReportFormProps> = ({
                   onClick={() => setFormData({ ...formData, date: getTodayString(-1) })}
                   className={`h-11 px-3 text-xs font-semibold rounded-xl border shrink-0 transition-colors ${
                     formData.date === getTodayString(-1)
-                      ? 'bg-[#2D2A26] text-[#F8F7F4] border-[#2D2A26]'
-                      : 'bg-[#F0EDE4] text-[#5A544C] border-[#E6E2D3] hover:bg-[#E6E2D3]'
+                      ? 'bg-ink text-on-dark border-ink'
+                      : 'bg-sunken text-ink-2 border-line hover:bg-line'
                   }`}
                 >
                   昨日
@@ -277,9 +277,9 @@ export const ReportForm: React.FC<ReportFormProps> = ({
             <div>
               <label
                 htmlFor="report-hours"
-                className="text-xs font-bold text-[#4A443F] mb-1.5 flex items-center gap-1.5"
+                className="text-xs font-bold text-ink-2 mb-1.5 flex items-center gap-1.5"
               >
-                <Clock className="w-3.5 h-3.5 text-[#6B6359]" />
+                <Clock className="w-3.5 h-3.5 text-ink-3" />
                 本日の稼働時間（任意）
               </label>
               <div className="relative">
@@ -292,9 +292,9 @@ export const ReportForm: React.FC<ReportFormProps> = ({
                   placeholder="8"
                   value={formData.workingHours}
                   onChange={(e) => setFormData({ ...formData, workingHours: e.target.value })}
-                  className="w-full h-11 px-3 pr-8 bg-[#F8F7F4] border border-[#E6E2D3] rounded-xl text-base font-medium text-[#2D2A26] focus:outline-none focus:ring-2 focus:ring-[#A5A58D]/30 focus:border-[#A5A58D] focus:bg-white"
+                  className="w-full h-11 px-3 pr-8 bg-sunken border border-line rounded-xl text-base font-medium text-ink focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring focus:bg-surface"
                 />
-                <span className="absolute right-3 top-3 text-xs text-[#6B6359] font-medium">時間</span>
+                <span className="absolute right-3 top-3 text-xs text-ink-3 font-medium">時間</span>
               </div>
             </div>
           </div>
@@ -302,16 +302,16 @@ export const ReportForm: React.FC<ReportFormProps> = ({
 
         {/* Yesterday's plan, brought forward */}
         {plansToCarryOver && (
-          <div className="rounded-2xl border border-[#D6DFCF] bg-[#F1F4EE] p-4 sm:p-5 space-y-2.5">
+          <div className="rounded-2xl border border-accent-line bg-accent-soft p-4 sm:p-5 space-y-2.5">
             <div className="flex items-start justify-between gap-2">
-              <h3 className="text-xs font-bold text-[#3F5136] flex items-center gap-1.5">
+              <h3 className="text-xs font-bold text-accent-ink flex items-center gap-1.5">
                 <CalendarClock className="w-3.5 h-3.5 shrink-0" />
                 {formatDateJapanese(plansToCarryOver.date)} の「明日の予定」
               </h3>
-              <span className="text-[11px] text-[#526346] shrink-0">前回の日報から</span>
+              <span className="text-[11px] text-accent-ink shrink-0">前回の日報から</span>
             </div>
 
-            <p className="text-sm text-[#2D2A26] whitespace-pre-wrap leading-relaxed bg-white rounded-xl border border-[#D6DFCF] p-3">
+            <p className="text-sm text-ink whitespace-pre-wrap leading-relaxed bg-surface rounded-xl border border-accent-line p-3">
               {plansToCarryOver.tomorrowPlans}
             </p>
 
@@ -321,8 +321,8 @@ export const ReportForm: React.FC<ReportFormProps> = ({
               disabled={carriedOver}
               className={`w-full h-10 flex items-center justify-center gap-1.5 rounded-xl font-bold text-xs transition-colors border ${
                 carriedOver
-                  ? 'bg-white text-[#526346] border-[#D6DFCF] cursor-default'
-                  : 'bg-[#6B705C] text-white hover:bg-[#5A5E4D] active:bg-[#4E5243] border-[#6B705C] cursor-pointer shadow-xs'
+                  ? 'bg-surface text-accent-ink border-accent-line cursor-default'
+                  : 'bg-accent text-on-dark hover:bg-accent-hover active:bg-accent-active border-accent cursor-pointer shadow-xs'
               }`}
             >
               {carriedOver ? (
@@ -341,16 +341,16 @@ export const ReportForm: React.FC<ReportFormProps> = ({
         )}
 
         {/* 1. Today's Tasks */}
-        <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E6E2D3] shadow-xs space-y-2.5">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-2.5">
           <div className="flex items-center justify-between">
             <label
               htmlFor="report-tasks"
-              className="text-xs font-bold text-[#2D2A26] flex items-center gap-1.5"
+              className="text-xs font-bold text-ink flex items-center gap-1.5"
             >
-              <span className="inline-block w-2 h-2 rounded-full bg-[#6B705C]"></span>
-              今日の主な業務・活動内容 <span className="text-[#9E5739]">*</span>
+              <span className="inline-block w-2 h-2 rounded-full bg-accent"></span>
+              今日の主な業務・活動内容 <span className="text-accent-2">*</span>
             </label>
-            <span className="text-[11px] text-[#6B6359]">箇条書き推奨</span>
+            <span className="text-[11px] text-ink-3">箇条書き推奨</span>
           </div>
 
           {/* Quick tags for smartphone */}
@@ -360,9 +360,9 @@ export const ReportForm: React.FC<ReportFormProps> = ({
                 key={tag}
                 type="button"
                 onClick={() => handleAppendTag('tasksCompleted', tag)}
-                className="inline-flex items-center gap-1 text-[11px] font-medium text-[#5A544C] bg-[#F0EDE4] hover:bg-[#E6E2D3] active:bg-[#DDD8CC] px-2.5 py-1 rounded-lg transition-colors border border-[#E6E2D3]/60 cursor-pointer"
+                className="inline-flex items-center gap-1 text-[11px] font-medium text-ink-2 bg-sunken hover:bg-line active:bg-sunken-2 px-2.5 py-1 rounded-lg transition-colors border border-line/60 cursor-pointer"
               >
-                <PlusCircle className="w-3 h-3 text-[#6B6359]" />
+                <PlusCircle className="w-3 h-3 text-ink-3" />
                 {tag}
               </button>
             ))}
@@ -374,22 +374,22 @@ export const ReportForm: React.FC<ReportFormProps> = ({
             value={formData.tasksCompleted}
             onChange={(e) => setFormData({ ...formData, tasksCompleted: e.target.value })}
             placeholder="例:&#10;・株式会社〇〇様との打ち合わせ（30分）&#10;・新規LPの構成案作成&#10;・会計入力と領収書整理"
-            className="w-full p-3.5 bg-[#F8F7F4] border border-[#E6E2D3] rounded-xl text-base leading-relaxed text-[#2D2A26] placeholder-[#6F6760] focus:outline-none focus:ring-2 focus:ring-[#A5A58D]/30 focus:border-[#A5A58D] focus:bg-white resize-y"
+            className="w-full p-3.5 bg-sunken border border-line rounded-xl text-base leading-relaxed text-ink placeholder-ink-3 focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring focus:bg-surface resize-y"
             required
           />
         </div>
 
         {/* 2. Achievements & Decisions */}
-        <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E6E2D3] shadow-xs space-y-2.5">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-2.5">
           <div className="flex items-center justify-between">
             <label
               htmlFor="report-achievements"
-              className="text-xs font-bold text-[#2D2A26] flex items-center gap-1.5"
+              className="text-xs font-bold text-ink flex items-center gap-1.5"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#9E5739]" />
+              <Sparkles className="w-3.5 h-3.5 text-accent-2" />
               成果・売上・決定事項
             </label>
-            <span className="text-[11px] text-[#6B6359]">意思決定の記録に</span>
+            <span className="text-[11px] text-ink-3">意思決定の記録に</span>
           </div>
 
           {/* Quick tags */}
@@ -399,9 +399,9 @@ export const ReportForm: React.FC<ReportFormProps> = ({
                 key={tag}
                 type="button"
                 onClick={() => handleAppendTag('achievements', tag)}
-                className="inline-flex items-center gap-1 text-[11px] font-medium text-[#5A544C] bg-[#F0EDE4] hover:bg-[#E6E2D3] active:bg-[#DDD8CC] px-2.5 py-1 rounded-lg transition-colors border border-[#E6E2D3]/60 cursor-pointer"
+                className="inline-flex items-center gap-1 text-[11px] font-medium text-ink-2 bg-sunken hover:bg-line active:bg-sunken-2 px-2.5 py-1 rounded-lg transition-colors border border-line/60 cursor-pointer"
               >
-                <PlusCircle className="w-3 h-3 text-[#6B6359]" />
+                <PlusCircle className="w-3 h-3 text-ink-3" />
                 {tag}
               </button>
             ))}
@@ -413,13 +413,13 @@ export const ReportForm: React.FC<ReportFormProps> = ({
             value={formData.achievements}
             onChange={(e) => setFormData({ ...formData, achievements: e.target.value })}
             placeholder="例:&#10;・〇〇案件の見積書（150万円）を送付、好感触&#10;・新機能のリリース日を今月25日に決定"
-            className="w-full p-3.5 bg-[#F8F7F4] border border-[#E6E2D3] rounded-xl text-base leading-relaxed text-[#2D2A26] placeholder-[#6F6760] focus:outline-none focus:ring-2 focus:ring-[#A5A58D]/30 focus:border-[#A5A58D] focus:bg-white resize-y"
+            className="w-full p-3.5 bg-sunken border border-line rounded-xl text-base leading-relaxed text-ink placeholder-ink-3 focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring focus:bg-surface resize-y"
           />
         </div>
 
         {/* 3. Learnings & Challenges */}
-        <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E6E2D3] shadow-xs space-y-2.5">
-          <label htmlFor="report-learnings" className="text-xs font-bold text-[#2D2A26] block">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-2.5">
+          <label htmlFor="report-learnings" className="text-xs font-bold text-ink block">
             課題・気づき・反省
           </label>
           <textarea
@@ -428,13 +428,13 @@ export const ReportForm: React.FC<ReportFormProps> = ({
             value={formData.learnings}
             onChange={(e) => setFormData({ ...formData, learnings: e.target.value })}
             placeholder="例:&#10;・午前中に重い実務を集中して片付けると午後の商談に余裕ができる&#10;・外注先への連絡フォーマットを整備する必要あり"
-            className="w-full p-3.5 bg-[#F8F7F4] border border-[#E6E2D3] rounded-xl text-base leading-relaxed text-[#2D2A26] placeholder-[#6F6760] focus:outline-none focus:ring-2 focus:ring-[#A5A58D]/30 focus:border-[#A5A58D] focus:bg-white resize-y"
+            className="w-full p-3.5 bg-sunken border border-line rounded-xl text-base leading-relaxed text-ink placeholder-ink-3 focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring focus:bg-surface resize-y"
           />
         </div>
 
         {/* 4. Tomorrow's Plans */}
-        <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E6E2D3] shadow-xs space-y-2.5">
-          <label htmlFor="report-tomorrow" className="text-xs font-bold text-[#2D2A26] block">
+        <div className="bg-surface rounded-2xl p-4 sm:p-5 border border-line shadow-xs space-y-2.5">
+          <label htmlFor="report-tomorrow" className="text-xs font-bold text-ink block">
             明日の予定・最優先タスク
           </label>
           <textarea
@@ -443,7 +443,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
             value={formData.tomorrowPlans}
             onChange={(e) => setFormData({ ...formData, tomorrowPlans: e.target.value })}
             placeholder="例:&#10;・10:00〜 税理士と月次ミーティング&#10;・A社提案書の最終確認&#10;・請求書の発行"
-            className="w-full p-3.5 bg-[#F8F7F4] border border-[#E6E2D3] rounded-xl text-base leading-relaxed text-[#2D2A26] placeholder-[#6F6760] focus:outline-none focus:ring-2 focus:ring-[#A5A58D]/30 focus:border-[#A5A58D] focus:bg-white resize-y"
+            className="w-full p-3.5 bg-sunken border border-line rounded-xl text-base leading-relaxed text-ink placeholder-ink-3 focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring focus:bg-surface resize-y"
           />
         </div>
 
@@ -452,19 +452,19 @@ export const ReportForm: React.FC<ReportFormProps> = ({
           {validationError && (
             <p
               role="alert"
-              className="mb-2 text-xs leading-relaxed text-[#7A4040] bg-[#F8EEEE] border border-[#E0C4C4] rounded-xl px-3 py-2.5"
+              className="mb-2 text-xs leading-relaxed text-danger-ink bg-danger-soft border border-danger-line rounded-xl px-3 py-2.5"
             >
               {validationError}
             </p>
           )}
           <button
             type="submit"
-            className="w-full h-13 flex items-center justify-center gap-2 bg-[#6B705C] hover:bg-[#5A5E4D] active:bg-[#4E5243] text-white rounded-2xl font-bold text-base shadow-sm transition-all touch-manipulation cursor-pointer"
+            className="w-full h-13 flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover active:bg-accent-active text-on-dark rounded-2xl font-bold text-base shadow-sm transition-all touch-manipulation cursor-pointer"
           >
             <Send className="w-4 h-4" />
             <span>{editingReport ? '日報を更新する' : '日報を保存・送信する'}</span>
           </button>
-          <p className="text-center text-xs text-[#6B6359] mt-2 font-medium">
+          <p className="text-center text-xs text-ink-3 mt-2 font-medium">
             保存後、スマホからLINEやメールへの転送、CSV出力もワンタップで行えます
           </p>
         </div>
@@ -479,21 +479,21 @@ export const ReportForm: React.FC<ReportFormProps> = ({
           panelClassName="max-w-md sm:rounded-3xl"
         >
           <div className="p-5 sm:p-6 space-y-4">
-            <div className="flex items-center gap-2.5 pb-2 border-b border-[#E6E2D3]">
-              <div className="w-8 h-8 rounded-full bg-[#FDF9F2] border border-[#EADBBD] flex items-center justify-center shrink-0">
-                <AlertTriangle className="w-4 h-4 text-[#846231]" />
+            <div className="flex items-center gap-2.5 pb-2 border-b border-line">
+              <div className="w-8 h-8 rounded-full bg-amber-soft border border-amber-line flex items-center justify-center shrink-0">
+                <AlertTriangle className="w-4 h-4 text-amber-ink" />
               </div>
               <div>
-                <h3 className="font-bold text-sm text-[#2D2A26]">
+                <h3 className="font-bold text-sm text-ink">
                   この日付の日報は既にあります
                 </h3>
-                <p className="text-xs text-[#6B6359]">{duplicateTarget.date}</p>
+                <p className="text-xs text-ink-3">{duplicateTarget.date}</p>
               </div>
             </div>
 
-            <div className="rounded-xl bg-[#F8F7F4] border border-[#E6E2D3] p-3 max-h-32 overflow-y-auto">
-              <p className="text-[11px] font-bold text-[#6B6359] mb-1">登録済みの内容</p>
-              <p className="text-xs text-[#4A443F] whitespace-pre-wrap leading-relaxed">
+            <div className="rounded-xl bg-sunken border border-line p-3 max-h-32 overflow-y-auto">
+              <p className="text-[11px] font-bold text-ink-3 mb-1">登録済みの内容</p>
+              <p className="text-xs text-ink-2 whitespace-pre-wrap leading-relaxed">
                 {duplicateTarget.tasksCompleted ||
                   duplicateTarget.achievements ||
                   '（内容なし）'}
@@ -502,35 +502,35 @@ export const ReportForm: React.FC<ReportFormProps> = ({
 
             {editingReport ? (
               <>
-                <p className="text-xs text-[#6B6359] leading-relaxed">
+                <p className="text-xs text-ink-3 leading-relaxed">
                   編集中の日報を「{duplicateTarget.date}」へ移動すると、既存の日報とどちらを残すかが決められません。
                   別の日付を選ぶか、先に上の日報を削除してください。
                 </p>
                 <button
                   type="button"
                   onClick={() => setDuplicateTarget(null)}
-                  className="w-full h-11 bg-[#6B705C] text-white hover:bg-[#5A5E4D] rounded-xl font-bold text-sm transition-colors cursor-pointer"
+                  className="w-full h-11 bg-accent text-on-dark hover:bg-accent-hover rounded-xl font-bold text-sm transition-colors cursor-pointer"
                 >
                   日付を選び直す
                 </button>
               </>
             ) : (
               <>
-                <p className="text-xs text-[#6B6359] leading-relaxed">
+                <p className="text-xs text-ink-3 leading-relaxed">
                   上書きすると、登録済みの内容は今入力した内容に置き換わります。元に戻すことはできません。
                 </p>
                 <div className="space-y-2">
                   <button
                     type="button"
                     onClick={handleConfirmOverwrite}
-                    className="w-full h-11 flex items-center justify-center gap-2 bg-[#8E4F4F] text-white hover:bg-[#783F3F] active:bg-[#6B3737] rounded-xl font-bold text-sm shadow-xs transition-colors cursor-pointer"
+                    className="w-full h-11 flex items-center justify-center gap-2 bg-danger text-on-dark hover:bg-danger-hover active:bg-danger-active rounded-xl font-bold text-sm shadow-xs transition-colors cursor-pointer"
                   >
                     上書きして保存する
                   </button>
                   <button
                     type="button"
                     onClick={() => setDuplicateTarget(null)}
-                    className="w-full h-11 bg-[#F0EDE4] text-[#2D2A26] hover:bg-[#E6E2D3] rounded-xl font-semibold text-sm transition-colors cursor-pointer border border-[#E6E2D3]"
+                    className="w-full h-11 bg-sunken text-ink hover:bg-line rounded-xl font-semibold text-sm transition-colors cursor-pointer border border-line"
                   >
                     キャンセル（日付を選び直す）
                   </button>
@@ -550,27 +550,27 @@ export const ReportForm: React.FC<ReportFormProps> = ({
           panelClassName="max-w-md sm:rounded-3xl animate-in fade-in zoom-in-95 duration-150"
         >
           <div className="p-5 sm:p-6 space-y-4">
-            <div className="flex items-center justify-between pb-2 border-b border-[#E6E2D3]">
-              <div className="flex items-center gap-2.5 text-[#526346]">
-                <div className="w-8 h-8 rounded-full bg-[#ECEEE6] flex items-center justify-center font-bold">
-                  <Check className="w-4 h-4 text-[#526346]" />
+            <div className="flex items-center justify-between pb-2 border-b border-line">
+              <div className="flex items-center gap-2.5 text-accent-ink">
+                <div className="w-8 h-8 rounded-full bg-accent-soft flex items-center justify-center font-bold">
+                  <Check className="w-4 h-4 text-accent-ink" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm text-[#2D2A26]">日報を登録しました</h3>
-                  <p className="text-xs text-[#6B6359]">{submittedReport.date}</p>
+                  <h3 className="font-bold text-sm text-ink">日報を登録しました</h3>
+                  <p className="text-xs text-ink-3">{submittedReport.date}</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setSubmittedReport(null)}
                 aria-label="この画面を閉じる"
-                className="w-8 h-8 flex items-center justify-center text-[#6B6359] hover:text-[#2D2A26] rounded-full hover:bg-[#F0EDE4] transition-colors"
+                className="w-8 h-8 flex items-center justify-center text-ink-3 hover:text-ink rounded-full hover:bg-sunken transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <p className="text-xs text-[#6B6359] leading-relaxed">
+            <p className="text-xs text-ink-3 leading-relaxed">
               端末に安全に保存されました。必要に応じて外部ツールへ送信したり、CSVで保管できます。
             </p>
 
@@ -579,7 +579,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
               <button
                 type="button"
                 onClick={() => handleShare(submittedReport)}
-                className="w-full h-11 flex items-center justify-center gap-2 bg-[#6B705C] text-white hover:bg-[#5A5E4D] active:bg-[#4E5243] rounded-xl font-bold text-sm shadow-xs transition-colors cursor-pointer"
+                className="w-full h-11 flex items-center justify-center gap-2 bg-accent text-on-dark hover:bg-accent-hover active:bg-accent-active rounded-xl font-bold text-sm shadow-xs transition-colors cursor-pointer"
               >
                 <Share2 className="w-4 h-4" />
                 <span>スマホで共有 (LINE・メール)</span>
@@ -588,16 +588,16 @@ export const ReportForm: React.FC<ReportFormProps> = ({
               <button
                 type="button"
                 onClick={() => handleCopyText(submittedReport)}
-                className="w-full h-11 flex items-center justify-center gap-2 bg-[#F0EDE4] text-[#2D2A26] hover:bg-[#E6E2D3] active:bg-[#DDD8CC] rounded-xl font-semibold text-sm transition-colors cursor-pointer border border-[#E6E2D3]"
+                className="w-full h-11 flex items-center justify-center gap-2 bg-sunken text-ink hover:bg-line active:bg-sunken-2 rounded-xl font-semibold text-sm transition-colors cursor-pointer border border-line"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-[#526346]" />
-                    <span className="text-[#526346] font-bold">コピーしました！</span>
+                    <Check className="w-4 h-4 text-accent-ink" />
+                    <span className="text-accent-ink font-bold">コピーしました！</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4 text-[#6B6359]" />
+                    <Copy className="w-4 h-4 text-ink-3" />
                     <span>日報全文をクリップボードにコピー</span>
                   </>
                 )}
@@ -606,9 +606,9 @@ export const ReportForm: React.FC<ReportFormProps> = ({
               <button
                 type="button"
                 onClick={() => handleDownloadSingleCsv(submittedReport)}
-                className="w-full h-11 flex items-center justify-center gap-2 bg-[#F8F7F4] border border-[#E6E2D3] text-[#4A443F] hover:bg-[#F0EDE4] rounded-xl font-medium text-xs transition-colors cursor-pointer"
+                className="w-full h-11 flex items-center justify-center gap-2 bg-sunken border border-line text-ink-2 hover:bg-sunken rounded-xl font-medium text-xs transition-colors cursor-pointer"
               >
-                <FileSpreadsheet className="w-4 h-4 text-[#526346]" />
+                <FileSpreadsheet className="w-4 h-4 text-accent-ink" />
                 <span>この日報をCSVダウンロード</span>
               </button>
             </div>
@@ -617,7 +617,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({
               <button
                 type="button"
                 onClick={() => setSubmittedReport(null)}
-                className="w-full py-2 text-xs font-semibold text-[#6B6359] hover:text-[#2D2A26] text-center transition-colors"
+                className="w-full py-2 text-xs font-semibold text-ink-3 hover:text-ink text-center transition-colors"
               >
                 閉じる
               </button>
