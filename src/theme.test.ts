@@ -52,7 +52,7 @@ describe('theme tokens', () => {
       'line', 'line-strong',
       'ink', 'ink-2', 'ink-3', 'ink-soft', 'on-dark',
       'accent', 'accent-hover', 'accent-active', 'accent-soft', 'accent-soft-hover',
-      'accent-line', 'accent-ink', 'accent-2',
+      'accent-line', 'accent-ink', 'accent-2', 'on-accent', 'on-accent-2',
       'amber-soft', 'amber-line', 'amber-ink', 'mark',
       'danger', 'danger-hover', 'danger-active', 'danger-soft', 'danger-soft-hover',
       'danger-line', 'danger-ink',
@@ -80,6 +80,8 @@ describe('text contrast (WCAG AA, 4.5:1)', () => {
   it.each([
     ['on-dark', 'ink'], ['on-dark', 'accent'], ['on-dark', 'accent-hover'],
     ['on-dark', 'accent-active'], ['on-dark', 'danger'], ['on-dark', 'danger-hover'],
+    // ヘッダーはアクセント色の帯。タイトルも副次テキストもこの上に載る。
+    ['on-accent', 'accent'], ['on-accent', 'accent-hover'], ['on-accent', 'accent-active'],
   ])('%s on the filled surface %s', (fg, bg) => {
     expect(ratio(fg, bg)).toBeGreaterThanOrEqual(4.5);
   });
@@ -102,6 +104,19 @@ describe('structure', () => {
   it('keeps sunken fills distinct from the cards they sit in', () => {
     expect(ratio('sunken', 'surface')).toBeGreaterThan(1.08);
     expect(ratio('sunken-2', 'surface')).toBeGreaterThan(1.08);
+  });
+
+  // The accent is only just above 4.5:1 with white, so there is no room for a
+  // dimmed white on the header band: every label there has to be pure white.
+  // on-accent-2 is therefore for disabled controls only, which WCAG exempts.
+  it('never uses the dimmed on-accent tint for live text', () => {
+    const misuse = (componentSource.match(/[^\s'"`]*on-accent-2[^\s'"`]*/g) ?? [])
+      .filter((cls) => cls.startsWith('text-'));
+    const liveText = misuse.filter((cls) => {
+      const line = componentSource.split('\n').find((l) => l.includes(cls)) ?? '';
+      return !line.includes('cursor-not-allowed');
+    });
+    expect(liveText, `無効状態以外で使用: ${liveText.join(' | ')}`).toEqual([]);
   });
 
   it('defines the elevation tokens cards depend on', () => {

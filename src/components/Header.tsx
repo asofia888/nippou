@@ -106,19 +106,19 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-page/95 backdrop-blur-md border-b border-line">
+    <header className="sticky top-0 z-40 bg-accent border-b border-accent-active">
       <div className="max-w-xl mx-auto px-4 py-3">
         {/* Top brand row */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-ink text-on-dark flex items-center justify-center font-bold text-sm shadow-xs">
+            <div className="w-8 h-8 rounded-xl bg-surface text-accent flex items-center justify-center font-bold text-sm shadow-xs">
               日
             </div>
             <div>
-              <h1 className="text-base font-bold text-ink tracking-tight leading-none">
+              <h1 className="text-base font-bold text-on-accent tracking-tight leading-none">
                 一人社長の日報
               </h1>
-              <p className="text-[11px] text-ink-3 font-medium mt-0.5">
+              <p className="text-[11px] text-on-accent font-normal mt-0.5">
                 {profile.companyName ? `${profile.companyName} ` : ''}
                 {profile.presidentName ? `(${profile.presidentName})` : 'スマホから簡単作成 & CSV'}
               </p>
@@ -135,13 +135,13 @@ export const Header: React.FC<HeaderProps> = ({
               disabled={allReports.length === 0}
               className={`h-8.5 px-3 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer border ${
                 allReports.length > 0
-                  ? 'bg-surface text-accent-ink hover:bg-surface-hover border-line shadow-2xs'
-                  : 'bg-sunken text-ink-soft border-line cursor-not-allowed'
+                  ? 'bg-on-accent/15 text-on-accent hover:bg-on-accent/25 border-on-accent/40'
+                  : 'bg-on-accent/10 text-on-accent-2 border-on-accent/20 cursor-not-allowed'
               }`}
             >
               <Download className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">CSV保存</span>
-              <span className="text-[10px] bg-accent-soft text-accent-ink px-1.5 py-0.2 rounded-full font-mono">
+              <span className="text-[10px] bg-on-accent/25 text-on-accent px-1.5 py-0.2 rounded-full font-mono">
                 {reportsCount}
               </span>
             </button>
@@ -150,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={handleOpenSettings}
-              className="w-8.5 h-8.5 rounded-xl bg-surface hover:bg-surface-hover border border-line text-ink-3 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+              className="w-8.5 h-8.5 rounded-xl bg-on-accent/15 hover:bg-on-accent/25 border border-on-accent/40 text-on-accent flex items-center justify-center transition-colors cursor-pointer"
               title="会社名・設定"
               aria-label="会社名・設定を開く"
             >
@@ -160,14 +160,14 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Tab switchers: Mobile-optimized 44px min tap height */}
-        <div className="mt-3 grid grid-cols-2 gap-1 bg-sunken-2 p-1 rounded-xl border border-line/60">
+        <div className="mt-3 grid grid-cols-2 gap-1 bg-accent-active/50 p-1 rounded-xl border border-on-accent/20">
           <button
             type="button"
             onClick={() => onTabChange('create')}
             className={`py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               currentTab === 'create'
-                ? 'bg-surface text-ink shadow-xs'
-                : 'text-ink-3 hover:text-ink'
+                ? 'bg-surface text-accent-ink shadow-xs'
+                : 'text-on-accent'
             }`}
           >
             <span>✏️ 日報を書く</span>
@@ -177,12 +177,18 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => onTabChange('list')}
             className={`py-2 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               currentTab === 'list'
-                ? 'bg-surface text-ink shadow-xs'
-                : 'text-ink-3 hover:text-ink'
+                ? 'bg-surface text-accent-ink shadow-xs'
+                : 'text-on-accent'
             }`}
           >
             <span>📋 一覧・CSV出力</span>
-            <span className="text-[10px] bg-sunken-2 text-ink-2 px-1.5 py-0.2 rounded-full font-medium">
+            <span
+              className={`text-[10px] px-1.5 py-0.2 rounded-full font-medium ${
+                currentTab === 'list'
+                  ? 'bg-accent-soft text-accent-ink'
+                  : 'bg-on-accent/25 text-on-accent'
+              }`}
+            >
               {reportsCount}
             </span>
           </button>

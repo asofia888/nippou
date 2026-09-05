@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 /**
- * Grey ground, white cards, green accent.
+ * Cream ground, burnt-orange chrome — the palette of the diary app in the
+ * reference screenshot. --color-page and the orange were sampled from that
+ * image (#F3EEEA over 90k pixels, #D06515 over 8k).
  *
- * Every colour the UI uses is named here by role, so the look can be adjusted
- * in one place instead of across ~380 hard-coded hex values.
- *
- * Cards are separated twice over: they are white on a grey ground (1.11), and
- * they carry --shadow-card. The neutrals are grey with only a trace of the
- * accent's hue, so they sit with the green without reading as green.
+ * The sampled orange only reaches 3.78:1 with white text, so --color-accent is
+ * that hue darkened to the first value that clears AA (4.52:1). Side by side
+ * the difference is not visible; in the header, where white text sits directly
+ * on it, it is the difference between legible and not.
  *
  * Contrast rules the palette has to keep:
  *  - Text meets WCAG AA (4.5:1) against every surface it can land on.
@@ -17,56 +17,58 @@
  * src/theme.test.ts enforces both, and checks that cards keep their elevation.
  */
 @theme {
-  /* Surfaces — white cards on grey */
-  --color-page: #F2F4F2;
+  /* Surfaces — white cards on cream */
+  --color-page: #F3EEEA;
   --color-surface: #FFFFFF;
-  --color-surface-hover: #F8F9F8;
-  --color-sunken: #F0F2F0;         /* 入力欄・本文ブロック */
-  --color-sunken-2: #E5E8E5;       /* タブの溝・チップ */
+  --color-surface-hover: #FAF7F4;
+  --color-sunken: #F0E9E3;         /* 入力欄・本文ブロック */
+  --color-sunken-2: #E6DCD3;       /* タブの溝・チップ */
 
   /* Elevation */
-  --shadow-card: 0 1px 2px rgba(28, 31, 28, .06), 0 2px 8px rgba(28, 31, 28, .06);
-  --shadow-card-hover: 0 2px 4px rgba(28, 31, 28, .07), 0 8px 20px rgba(28, 31, 28, .10);
-  --shadow-modal: 0 2px 8px rgba(28, 31, 28, .10), 0 16px 48px rgba(28, 31, 28, .22);
+  --shadow-card: 0 1px 2px rgba(46, 42, 38, .07), 0 2px 8px rgba(46, 42, 38, .06);
+  --shadow-card-hover: 0 2px 4px rgba(46, 42, 38, .08), 0 8px 20px rgba(46, 42, 38, .11);
+  --shadow-modal: 0 2px 8px rgba(46, 42, 38, .12), 0 16px 48px rgba(46, 42, 38, .24);
 
   /* Lines — controls and dividers only, not card outlines */
-  --color-line: #B1B8B0;
-  --color-line-strong: #9DA49C;
+  --color-line: #BCADA1;
+  --color-line-strong: #AC9C91;
 
   /* Text */
-  --color-ink: #1C1F1C;            /* 16.6:1 on white */
-  --color-ink-2: #4E524D;          /*  8.0:1 */
-  --color-ink-3: #636862;          /*  5.7:1 — 補助文・プレースホルダ */
-  --color-ink-soft: #9BA09A;       /* 無効状態のみ (WCAG対象外) */
+  --color-ink: #2E2A26;            /* 14.2:1 on white */
+  --color-ink-2: #574F48;          /*  8.0:1 */
+  --color-ink-3: #696059;          /*  6.1:1 — 補助文・プレースホルダ */
+  --color-ink-soft: #A2988F;       /* 無効状態のみ (WCAG対象外) */
   --color-on-dark: #FFFFFF;        /* 濃色面に載せる文字 */
 
-  /* Accent — green */
-  --color-accent: #3F7A50;
-  --color-accent-hover: #356841;
-  --color-accent-active: #2A5534;
-  --color-accent-soft: #E7F1E8;
-  --color-accent-soft-hover: #D6E7D9;
-  --color-accent-line: #99BCA1;
-  --color-accent-ink: #2C5B39;
-  --color-accent-2: #9E552B;       /* 必須マーク・成果アイコン */
+  /* Accent — burnt orange. Also the header band. */
+  --color-accent: #BC5B13;
+  --color-accent-hover: #A04D0F;
+  --color-accent-active: #85400C;
+  --color-accent-soft: #FBEBDE;
+  --color-accent-soft-hover: #F6DCC6;
+  --color-accent-line: #DFA87A;
+  --color-accent-ink: #AB5411;
+  --color-accent-2: #9C3F14;       /* 必須マーク・成果アイコン */
+  --color-on-accent: #FFFFFF;      /* オレンジ帯に載せる文字 */
+  --color-on-accent-2: #F9DFC9;    /* 同・無効状態のみ (WCAG対象外) */
 
-  /* Amber — 成果・編集中 */
-  --color-amber-soft: #FCF3E2;
-  --color-amber-line: #D5B372;
-  --color-amber-ink: #785717;
-  --color-mark: #F9E39C;           /* 検索ハイライト */
+  /* Amber — 成果・編集中。オレンジと混ざらないよう金色寄りに置く */
+  --color-amber-soft: #FBF3DC;
+  --color-amber-line: #D3B462;
+  --color-amber-ink: #8A6A18;
+  --color-mark: #F8E39B;           /* 検索ハイライト */
 
   /* Danger */
-  --color-danger: #AF4139;
-  --color-danger-hover: #8F312B;
-  --color-danger-active: #732622;
-  --color-danger-soft: #FBEDEB;
-  --color-danger-soft-hover: #F5DDD9;
-  --color-danger-line: #DEA8A1;
-  --color-danger-ink: #93362E;
+  --color-danger: #A8322B;
+  --color-danger-hover: #8C2924;
+  --color-danger-active: #71201C;
+  --color-danger-soft: #FAEAE7;
+  --color-danger-soft-hover: #F4D8D2;
+  --color-danger-line: #DEA59C;
+  --color-danger-ink: #A8322B;
 
   /* Focus */
-  --color-ring: #6FA47D;
+  --color-ring: #C68A5A;
 }
 
 @layer base {
