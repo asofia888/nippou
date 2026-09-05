@@ -19,9 +19,9 @@
  */
 @theme {
   /* Surfaces — white cards on pale cream */
-  --color-page: #F7F3EE;
+  --color-page: #FAF7F3;
   --color-surface: #FFFFFF;
-  --color-surface-hover: #FBF8F4;
+  --color-surface-hover: #F8F4EF;
   --color-sunken: #F4EFE8;         /* 入力欄・本文ブロック */
   --color-sunken-2: #EBE3D9;       /* タブの溝・チップ */
 
