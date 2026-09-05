@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 /**
- * Cream ground, burnt-orange chrome — the palette of the diary app in the
- * reference screenshot. --color-page and the orange were sampled from that
- * image (#F3EEEA over 90k pixels, #D06515 over 8k).
+ * Cream ground, bright orange chrome. --color-page was sampled from the
+ * reference screenshot (#F3EEEA, 90k pixels); --color-accent is the brighter
+ * orange the owner chose.
  *
- * The sampled orange only reaches 3.78:1 with white text, so --color-accent is
- * that hue darkened to the first value that clears AA (4.52:1). Side by side
- * the difference is not visible; in the header, where white text sits directly
- * on it, it is the difference between legible and not.
+ * That accent is a deliberate exception to the palette's own rule: white on it
+ * is 3.43:1, under AA's 4.5 for body text, though above the 3.0 that large
+ * text and UI boundaries need. It was picked knowingly, so the band and the
+ * primary button keep it. Everything else still clears AA — including
+ * --color-accent-hover and -active, so pressed and hovered states are solid,
+ * and --color-accent-ink for orange text on light surfaces.
  *
- * Contrast rules the palette has to keep:
+ * Contrast rules the rest of the palette keeps:
  *  - Text meets WCAG AA (4.5:1) against every surface it can land on.
  *  - Controls (inputs, chips, tinted blocks) keep an outline at 1.8:1 or
  *    better — a shadow is not a substitute for a control boundary.
- * src/theme.test.ts enforces both, and checks that cards keep their elevation.
+ * src/theme.test.ts enforces both, pins the accent exception at 3.0 so it
+ * cannot silently slide further, and checks that cards keep their elevation.
  */
 @theme {
   /* Surfaces — white cards on cream */
@@ -40,17 +43,17 @@
   --color-ink-soft: #A2988F;       /* 無効状態のみ (WCAG対象外) */
   --color-on-dark: #FFFFFF;        /* 濃色面に載せる文字 */
 
-  /* Accent — burnt orange. Also the header band. */
-  --color-accent: #BC5B13;
-  --color-accent-hover: #A04D0F;
-  --color-accent-active: #85400C;
-  --color-accent-soft: #FBEBDE;
-  --color-accent-soft-hover: #F6DCC6;
-  --color-accent-line: #DFA87A;
-  --color-accent-ink: #AB5411;
-  --color-accent-2: #9C3F14;       /* 必須マーク・成果アイコン */
+  /* Accent — bright orange. Also the header band. White on it is 3.43:1. */
+  --color-accent: #E06711;
+  --color-accent-hover: #C0580F;   /* 白文字 4.52:1 */
+  --color-accent-active: #98460C;  /* 白文字 6.53:1 */
+  --color-accent-soft: #FDEEE1;
+  --color-accent-soft-hover: #F9DCC4;
+  --color-accent-line: #ECA66D;
+  --color-accent-ink: #B0510D;     /* 明るい面に載せるオレンジ文字 4.5:1 以上 */
+  --color-accent-2: #92430B;       /* 必須マーク・成果アイコン */
   --color-on-accent: #FFFFFF;      /* オレンジ帯に載せる文字 */
-  --color-on-accent-2: #F9DFC9;    /* 同・無効状態のみ (WCAG対象外) */
+  --color-on-accent-2: #FBE3CE;    /* 同・無効状態のみ (WCAG対象外) */
 
   /* Amber — 成果・編集中。オレンジと混ざらないよう金色寄りに置く */
   --color-amber-soft: #FBF3DC;
@@ -68,7 +71,7 @@
   --color-danger-ink: #A8322B;
 
   /* Focus */
-  --color-ring: #C68A5A;
+  --color-ring: #DA9257;
 }
 
 @layer base {
