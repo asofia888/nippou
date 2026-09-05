@@ -1,59 +1,63 @@
 @import "tailwindcss";
 
 /**
- * Ivory theme.
+ * White-and-green theme.
  *
  * Every colour the UI uses is named here by role, so the look can be adjusted
- * in one place instead of across ~380 hard-coded hex values. Contrast against
- * every surface it can land on is at least 4.5:1 for text; borders sit around
- * 2:1 so cards actually read as cards on the ivory ground.
+ * in one place instead of across ~380 hard-coded hex values.
+ *
+ * Two constraints shaped the exact values:
+ *  - Text meets WCAG AA (4.5:1) against every surface it can land on.
+ *  - Borders stay at or above 1.8:1. Cards sit on a near-white ground, so a
+ *    typical 1.2:1 hairline would let their outlines dissolve.
+ * src/theme.test.ts enforces both.
  */
 @theme {
-  /* Surfaces */
-  --color-page: #F6F0DE;           /* アイボリーの地 */
-  --color-surface: #FFFFFF;        /* カード */
-  --color-surface-hover: #FBF7EC;
-  --color-sunken: #F3ECD9;         /* 入力欄・本文ブロック */
-  --color-sunken-2: #EAE1C7;       /* タブの溝・チップ */
+  /* Surfaces — white cards on a ground barely tinted off white */
+  --color-page: #F0F5EF;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F7FAF6;
+  --color-sunken: #EFF4EE;         /* 入力欄・本文ブロック */
+  --color-sunken-2: #E2EAE0;       /* タブの溝・チップ */
 
   /* Lines */
-  --color-line: #C4B288;
-  --color-line-strong: #AD9764;
+  --color-line: #ADBBAA;
+  --color-line-strong: #96A792;
 
   /* Text */
-  --color-ink: #2A2620;            /* 15.0:1 on surface */
-  --color-ink-2: #574F41;          /*  8.1:1 */
-  --color-ink-3: #6B6252;          /*  6.0:1 — 補助文・プレースホルダ */
-  --color-ink-soft: #9C907A;       /* 無効状態のみ (WCAG対象外) */
-  --color-on-dark: #F6F0DE;        /* 濃色面に載せる文字 */
+  --color-ink: #1C201B;            /* 16.5:1 on surface */
+  --color-ink-2: #4E564C;          /*  7.6:1 */
+  --color-ink-3: #616A5F;          /*  5.6:1 — 補助文・プレースホルダ */
+  --color-ink-soft: #98A196;       /* 無効状態のみ (WCAG対象外) */
+  --color-on-dark: #FFFFFF;        /* 濃色面に載せる文字 */
 
-  /* Accent — olive */
-  --color-accent: #4F5A3C;
-  --color-accent-hover: #3E4830;
-  --color-accent-active: #2F3724;
-  --color-accent-soft: #E6EDD5;
-  --color-accent-soft-hover: #DAE4C2;
-  --color-accent-line: #9DB273;
-  --color-accent-ink: #3B4529;
-  --color-accent-2: #8C4A2B;       /* 必須マーク・成果アイコン */
+  /* Accent — green */
+  --color-accent: #3F7A50;
+  --color-accent-hover: #356841;
+  --color-accent-active: #2A5534;
+  --color-accent-soft: #E7F1E8;
+  --color-accent-soft-hover: #D6E7D9;
+  --color-accent-line: #99BCA1;
+  --color-accent-ink: #2C5B39;
+  --color-accent-2: #9E552B;       /* 必須マーク・成果アイコン */
 
   /* Amber — 成果・編集中 */
-  --color-amber-soft: #FAEFD2;
-  --color-amber-line: #CBA765;
-  --color-amber-ink: #6F5217;
-  --color-mark: #F2D68C;           /* 検索ハイライト */
+  --color-amber-soft: #FCF3E2;
+  --color-amber-line: #D5B372;
+  --color-amber-ink: #785717;
+  --color-mark: #F9E39C;           /* 検索ハイライト */
 
   /* Danger */
-  --color-danger: #8C4343;
-  --color-danger-hover: #733636;
-  --color-danger-active: #5D2C2C;
-  --color-danger-soft: #F9E8E3;
-  --color-danger-soft-hover: #F2DAD3;
-  --color-danger-line: #CE9A8D;
-  --color-danger-ink: #7A3630;
+  --color-danger: #AF4139;
+  --color-danger-hover: #8F312B;
+  --color-danger-active: #732622;
+  --color-danger-soft: #FBEDEB;
+  --color-danger-soft-hover: #F5DDD9;
+  --color-danger-line: #DEA8A1;
+  --color-danger-ink: #93362E;
 
   /* Focus */
-  --color-ring: #9E8E62;
+  --color-ring: #6FA47D;
 }
 
 @layer base {
